@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title>Card game</title>
+	<script language='JavaScript' type='text/JavaScript'>
+<!--
+  
+ var x = {};  //Globally scoped object  
+
+// Function to indicate instruction move left/move right  
+function instruction() { 
+			var arr = ["move left", "move right"];
+            x.pos=arr[Math.floor(Math.random()*arr.length)];
+            document.getElementById("four").innerHTML=x.pos;
+        }
+    
+
+// To check if the move is as per the instruction
+function condition(strr){
+	if (x.pos=="move right" && strr=="right")
+		return "correct"
+	else if (x.pos=="move left" && strr=="left")
+		return "correct"
+	else
+		return "Try again"
+
+}
+
+// To move the card on button click
+function move_img(str) {
+
+var step=300; // specify how much the card will be moved
+switch(str){
+
+case "left":
+var y=document.getElementById('i1').offsetLeft;
+y= y - step;
+document.getElementById('i1').style.left= y + "px";
+window.alert(condition(str));
+break;
+
+case "right":
+var y=document.getElementById('i1').offsetLeft;
+y= y + step;
+document.getElementById('i1').style.left= y + "px";
+window.alert(condition(str));
+break;
+
+
+}
+}
+
+</script>
+</head>
+<body >	
+	<center>
+
+	<!-- card image -->
+	<p id=two style="height: 400px">
+		<table> <tr>
+			<td id="lm"></td> 
+			<td><img src=card.png id='i1' style="position:absolute; left: 580; top: 10; width: 200px; height: 300px" align="center"></td>
+			<td id="rm"></td>
+	</p>
+	
+	<!-- left and right buttons-->
+	<p id="three">
+		<table>
+			<tr>
+			<td> <input type=button onClick=move_img('left') value='Left' style="width: 200px; height: 100px; margin-top: 320px; font-size: 40px"></td>	
+			<td> <input type=button onClick=move_img('right') value='Right' style="width: 200px; height: 100px; margin-top: 320px; font-size: 40px"> </td>
+			</tr>
+			
+		</table>
+	</p>
+	
+	<p id="four" style="font-size: 50px"><input type=button onClick=instruction() value='Start' style="width: 200px; height: 100px; margin-top: 10px; align-self: center; font-size: 40px"></p>
+
+
+</center>
+
+<audio src="right.mp3" autoplay></audio>
+</body>
+</html>
